@@ -1,0 +1,55 @@
+root@lubuntu:~/file_exercise# ls -la
+total 8
+drwxr-xr-x 2 root root 4096 Thg 5  12 10:48 .
+drwx------ 7 root root 4096 Thg 5  12 10:47 ..
+-rw-r--r-- 1 root root    0 Thg 5  12 10:48 info_backup.txt
+-rw-r--r-- 1 root root    0 Thg 5  12 10:47 info.txt
+-rw-r--r-- 1 root root    0 Thg 5  12 10:47 run.sh
+root@lubuntu:~/file_exercise# chmod u+x run.sh
+root@lubuntu:~/file_exercise# ls -la
+total 8
+drwxr-xr-x 2 root root 4096 Thg 5  12 10:48 .
+drwx------ 7 root root 4096 Thg 5  12 10:47 ..
+-rw-r--r-- 1 root root    0 Thg 5  12 10:48 info_backup.txt
+-rw-r--r-- 1 root root    0 Thg 5  12 10:47 info.txt
+-rwxr--r-- 1 root root    0 Thg 5  12 10:47 run.sh
+root@lubuntu:~/file_exercise# ls -i
+316338 info_backup.txt  316336 info.txt  316337 run.sh
+root@lubuntu:~/file_exercise# stat info.txt 
+  File: info.txt
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: 801h/2049d      Inode: 316336      Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2025-05-12 10:48:18.385565852 +0700
+Modify: 2025-05-12 10:47:23.710969873 +0700
+Change: 2025-05-12 10:47:23.710969873 +0700
+ Birth: 2025-05-12 10:47:23.710969873 +0700
+
+
+inode is a data structure that stores metadata about a file or directory
+Each file or directory has a unique inode number within the same file system.
+
+inode numbers is like a identification number for each file or directory.
+so it like address of a variable.
+
+if you want 2 that files have same inode, you must hard link, like link 2 file together.
+(ln info.txt info_backup.txt)
+
+it like alias in C, when you use reference to a variable, so at same address, same value,
+but it has 2 or more name to use.
+
+
+
+root@lubuntu:~/file_exercise# touch .config
+root@lubuntu:~/file_exercise# ls
+file_notes.txt  info_backup.txt  info.txt  run.sh
+root@lubuntu:~/file_exercise# ls -a
+.  ..  .config  file_notes.txt  info_backup.txt  info.txt  run.sh
+root@lubuntu:~/file_exercise#  find /proc -maxdepth 1 -name mount
+/proc/mounts
+root@lubuntu:~/file_exercise#  
+
+
+
+/dev/sda1 / ext4 rw,relatime 0 0
+Observed that /dev/sda1 is mounted on / using the ext4 filesystem.
