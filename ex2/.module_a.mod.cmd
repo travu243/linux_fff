@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/assignment2/ex2/module_a.mod := printf '%s\n'   module_a.o | awk '!x[$$0]++ { print("/home/lubuntu/Desktop/training/assignment2/ex2/"$$0) }' > /home/lubuntu/Desktop/training/assignment2/ex2/module_a.mod

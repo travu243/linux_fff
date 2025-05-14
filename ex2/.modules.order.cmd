@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/assignment2/ex2/modules.order := {   echo /home/lubuntu/Desktop/training/assignment2/ex2/module_a.o;   echo /home/lubuntu/Desktop/training/assignment2/ex2/module_b.o; :; } > /home/lubuntu/Desktop/training/assignment2/ex2/modules.order

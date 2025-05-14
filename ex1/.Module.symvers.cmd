@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/assignment2/ex1/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/lubuntu/Desktop/training/assignment2/ex1/Module.symvers -T /home/lubuntu/Desktop/training/assignment2/ex1/modules.order -i Module.symvers -e 

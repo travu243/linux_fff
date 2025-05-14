@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/assignment2/ex2/module_b.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/lubuntu/Desktop/training/assignment2/ex2/module_b.ko /home/lubuntu/Desktop/training/assignment2/ex2/module_b.o /home/lubuntu/Desktop/training/assignment2/ex2/module_b.mod.o
