@@ -7,10 +7,10 @@
 void handle_signal(int sig) {
     switch (sig) {
         case SIGUSR1:
-            printf("Received SIGUSR1: Custom message from handler.\n");
+            printf("SIGUSR1: aaaaaaa\n");
             break;
         case SIGUSR2:
-            printf("Received SIGUSR2: Terminating the program.\n");
+            printf("SIGUSR2: bye bye\n");
             exit(0);
             break;
         default:
