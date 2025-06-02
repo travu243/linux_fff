@@ -23,13 +23,13 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 
 ## File Structure
 --
-├── server_tls_final.c # TLS-encrypted chat server
-├── client_tls_final.c # TLS chat client
-├── cert.pem # Server certificate (self-signed)
-├── key.pem # Server private key
-├── users.txt # User credentials
-├── chatlog.txt # Chat message log
-├── README.md # This documentation
+├── server_tls_final.c # TLS-encrypted chat server  
+├── client_tls_final.c # TLS chat client  
+├── cert.pem # Server certificate (self-signed)  
+├── key.pem # Server private key  
+├── users.txt # User credentials  
+├── chatlog.txt # Chat message log  
+├── README.md # This documentation  
 --
 
 ## Prerequisites
