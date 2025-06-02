@@ -22,7 +22,7 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 ---
 
 ## File Structure
-.
+--
 ├── server_tls_final.c # TLS-encrypted chat server
 ├── client_tls_final.c # TLS chat client
 ├── cert.pem # Server certificate (self-signed)
@@ -30,9 +30,7 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 ├── users.txt # User credentials
 ├── chatlog.txt # Chat message log
 ├── README.md # This documentation
-.
-
----
+--
 
 ## Prerequisites
 
@@ -65,18 +63,18 @@ When prompted, enter the server's IP address (e.g., 127.0.0.1 for localhost).
 
 ## Chat Flow
 ### Client Interaction:
-Input server IP.
-Choose login (1) or register (2).
-Enter username & password (server will prompt).
-Receive chat log on successful login.
-Start chatting!
+- Input server IP.
+- Choose login (1) or register (2).
+- Enter username & password (server will prompt).
+- Receive chat log on successful login.
+- Start chatting!
 
 ### Server Behavior:
-Accepts multiple clients via threads.
-Validates or registers users.
-Broadcasts messages to all connected clients.
-Sends chat log and join notification on new connection.
-Appends every message to chatlog.txt.
+- Accepts multiple clients via threads.
+- Validates or registers users.
+- Broadcasts messages to all connected clients.
+- Sends chat log and join notification on new connection.
+- Appends every message to chatlog.txt.
 
 ## Example Session
 ### On Server:
