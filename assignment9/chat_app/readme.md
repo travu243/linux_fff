@@ -19,10 +19,7 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 - Sends and receives encrypted messages.
 - Displays server responses and other clients' messages.
 
----
-
 ## File Structure
---
 ├── server_tls_final.c # TLS-encrypted chat server  
 ├── client_tls_final.c # TLS chat client  
 ├── cert.pem # Server certificate (self-signed)  
@@ -30,7 +27,7 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 ├── users.txt # User credentials  
 ├── chatlog.txt # Chat message log  
 ├── README.md # This documentation  
---
+
 
 ## Prerequisites
 
