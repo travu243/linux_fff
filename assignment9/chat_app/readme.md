@@ -22,7 +22,7 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 ---
 
 ## File Structure
-
+.
 ├── server_tls_final.c # TLS-encrypted chat server
 ├── client_tls_final.c # TLS chat client
 ├── cert.pem # Server certificate (self-signed)
@@ -30,7 +30,7 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 ├── users.txt # User credentials
 ├── chatlog.txt # Chat message log
 ├── README.md # This documentation
-
+.
 
 ---
 
@@ -63,30 +63,30 @@ gcc client_tls_final.c -o client_tls_final -lssl -lcrypto
 ```
 When prompted, enter the server's IP address (e.g., 127.0.0.1 for localhost).
 
-### Chat Flow
-## Client Interaction:
+## Chat Flow
+### Client Interaction:
 Input server IP.
 Choose login (1) or register (2).
 Enter username & password (server will prompt).
 Receive chat log on successful login.
 Start chatting!
 
-## Server Behavior:
+### Server Behavior:
 Accepts multiple clients via threads.
 Validates or registers users.
 Broadcasts messages to all connected clients.
 Sends chat log and join notification on new connection.
 Appends every message to chatlog.txt.
 
-### Example Session
-## On Server:
+## Example Session
+### On Server:
 ```
 [SERVER]: alice joined the chat
 [SERVER]: bob joined the chat
 [alice]: Hello everyone!
 ```
 
-## On Client:
+### On Client:
 ```
 Enter IP address of server: 127.0.0.1
 1. to login
@@ -99,13 +99,13 @@ bob joined the chat
 [bob]: Hello!
 ```
 
-### Security Notes
+## Security Notes
 - TLS encryption ensures confidentiality and integrity.
 - Passwords stored as plaintext in users.txt (for demonstration only).
 - Use hashing (e.g., SHA256 with salt) for real deployments.
 - Self-signed certificates used — for testing only. Use CA-signed certificates for production.
 
-### Limitations
+## Limitations
 - Terminal-only UI.
 - No password hashing.
 - Not suitable for production without security improvements.
