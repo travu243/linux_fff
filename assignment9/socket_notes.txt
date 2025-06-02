@@ -1,0 +1,8 @@
+tcp    LISTEN  0       128            0.0.0.0:22           0.0.0.0:*
+
+Port 22 is likely SSH
+
+
+ex3:
+
+X0 is likely for the X server (such as Xorg), which handles graphical display connections on display :0

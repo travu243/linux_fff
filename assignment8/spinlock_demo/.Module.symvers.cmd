@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/assignment8/spinlock_demo/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/lubuntu/Desktop/training/assignment8/spinlock_demo/Module.symvers -T /home/lubuntu/Desktop/training/assignment8/spinlock_demo/modules.order -i Module.symvers -e 

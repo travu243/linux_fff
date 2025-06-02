@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/assignment8/spinlock_demo/modules.order := {   echo /home/lubuntu/Desktop/training/assignment8/spinlock_demo/spinlock1.o;   echo /home/lubuntu/Desktop/training/assignment8/spinlock_demo/spinlock2.o; :; } > /home/lubuntu/Desktop/training/assignment8/spinlock_demo/modules.order

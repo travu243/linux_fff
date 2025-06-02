@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/assignment8/spinlock_demo/spinlock1.mod := printf '%s\n'   spinlock1.o | awk '!x[$$0]++ { print("/home/lubuntu/Desktop/training/assignment8/spinlock_demo/"$$0) }' > /home/lubuntu/Desktop/training/assignment8/spinlock_demo/spinlock1.mod
