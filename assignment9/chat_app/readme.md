@@ -29,6 +29,76 @@ This project implements a **multi-client chat system** in C using **OpenSSL/TLS 
 ├── README.md # This documentation  
 
 
+## Code flow diagram
+```
+[Start]
+   |
+   v
+[Initialize OpenSSL context]
+   |
+   v
+[Load cert.pem and key.pem]
+   |
+   v
+[Create TCP socket and bind to port]
+   |
+   v
+[Listen for connections]
+   |
+   v
+{ Loop: accept client }
+   |
+   v
+[Create SSL object, attach client socket]
+   |
+   v
+[Perform TLS handshake]
+   |
+   v
+[Send login/signin prompts to client]
+   |
+   v
+[Receive user credentials via SSL_read]
+   |
+   v
+[Check authentication (username/password)]
+   |
+   v
+(If fail) --> [Send fail msg and disconnect]
+   |
+  (Else)
+   |
+   v
+[Send chat history to client]
+   |
+   v
+[Broadcast "<user> joined the chat"]
+   |
+   v
+{ Loop: Handle incoming message }  <---------
+   |                                        |
+   v                                        |
+[Receive message from client]               |
+   |                                        |
+   v                                        |
+[Append message to chat log file]           |
+   |                                        |
+   v                                        |
+[Broadcast message to all clients]          |
+   |                                        |
+   |                                        |
+   |----->  { Repeat until disconnect }-----|
+   |
+   v
+[Broadcast "<user> left the chat"]
+   |
+   v
+[Free SSL, close socket]
+   |
+   v
+[End client thread]
+```
+
 ## Prerequisites
 
 - GCC Compiler
