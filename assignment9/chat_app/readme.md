@@ -40,6 +40,32 @@ sudo apt update
 sudo apt install build-essential libssl-dev
 ```
 
+## Build
+### client-server
+You only need run:
+```
+make
+```
+to genarate final output to run, or you can run step by step below.
+
+### server (no encrypt)
+
+- I also make server.c with same features but without TLS, and don't need a script to become client.
+You just need to:
+```
+nc [ip address] [port]
+```
+to connect to ip address of device is running server.c
+
+- To build, run:
+```
+make no_tls_server.mk
+```
+then run this to host server chat app:
+```
+./no_tls_server
+```
+
 ## Generate TLS Certificate
 ```bash
 openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes
