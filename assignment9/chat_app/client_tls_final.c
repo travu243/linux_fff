@@ -25,9 +25,13 @@ void *recv_msg(void *arg) {
 }
 
 int main() {
+
+    //SSL_library_init registers TLS ciphers and digests
     SSL_library_init();
+    //add all algorithms to table for lookup ciphers and digests
     OpenSSL_add_all_algorithms();
     SSL_load_error_strings();
+    // object to establish TLS/SSL enabled connections
     SSL_CTX *ctx = SSL_CTX_new(TLS_client_method());
 
     if (!ctx) {
@@ -46,6 +50,7 @@ int main() {
     sock = socket(AF_INET, SOCK_STREAM, 0);
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
+    // convert ip address from text to binary
     inet_pton(AF_INET, ip, &server_addr.sin_addr);
 
     if (connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
@@ -53,7 +58,9 @@ int main() {
         return 1;
     }
 
+    // object to hold the data for a TLS/SSL connection
     ssl = SSL_new(ctx);
+    // set fd for in/output of ssl/tls
     SSL_set_fd(ssl, sock);
     if (SSL_connect(ssl) <= 0) {
         ERR_print_errors_fp(stderr);

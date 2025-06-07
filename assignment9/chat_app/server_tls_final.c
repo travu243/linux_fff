@@ -167,7 +167,7 @@ void *handle_client(void *arg) {
     save_chat_log(join_msg);
     send_chat_log(ssl);
 
-    // chat
+    // handle chat
     while (1) {
         memset(buffer, 0, sizeof(buffer));
         int len = SSL_read(ssl, buffer, sizeof(buffer));
@@ -193,9 +193,12 @@ void *handle_client(void *arg) {
 }
 
 int main() {
+    // SSL_library_init registers TLS ciphers and digests
     SSL_library_init();
+    //add all algorithms to table for lookup ciphers and digests
     OpenSSL_add_all_algorithms();
     SSL_load_error_strings();
+    // object to establish TLS/SSL enabled connections
     SSL_CTX *ctx = SSL_CTX_new(TLS_server_method());
 
     if (!ctx) {
@@ -217,6 +220,7 @@ int main() {
         .sin_addr.s_addr = INADDR_ANY
     };
 
+    // bind ip address to socket
     bind(server_sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
     listen(server_sock, 10);
 

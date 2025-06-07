@@ -200,4 +200,3 @@ bob joined the chat
 - Terminal-only UI.
 - No password hashing.
 - Not suitable for production without security improvements.
-
