@@ -8,10 +8,10 @@ volatile sig_atomic_t sigint_count = 0;
 // handler Ctrl + C
 void handle_sigint(int signum) {
     sigint_count++;
-    printf("SIGINT received (%d time(s)).\n", sigint_count);
+    printf("SIGINT received (%d).\n", sigint_count);
 
     if (sigint_count >= 3) {
-        printf("received SIGINT 3 times. Exiting...\n");
+        printf("received SIGINT 3 times. exit\n");
         exit(0);
     }
 }
