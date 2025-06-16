@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/demo.mod := printf '%s\n'   demo.o | awk '!x[$$0]++ { print("/home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/"$$0) }' > /home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/demo.mod

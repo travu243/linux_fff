@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment11/ex2/ex2.mod := printf '%s\n'   ex2.o | awk '!x[$$0]++ { print("/home/aaa/Desktop/training/assignment11/ex2/"$$0) }' > /home/aaa/Desktop/training/assignment11/ex2/ex2.mod

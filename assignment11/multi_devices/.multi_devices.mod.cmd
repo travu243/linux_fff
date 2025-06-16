@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment11/multi_devices/multi_devices.mod := printf '%s\n'   multi_devices.o | awk '!x[$$0]++ { print("/home/aaa/Desktop/training/assignment11/multi_devices/"$$0) }' > /home/aaa/Desktop/training/assignment11/multi_devices/multi_devices.mod

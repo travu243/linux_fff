@@ -8,15 +8,15 @@ int main() {
     struct timeval timeout;
     int retval;
 
-    // Set timeout to 10 seconds
+    // timeout 10 seconds
     timeout.tv_sec = 10;
     timeout.tv_usec = 0;
 
-    // Clear and set file descriptor set
+    // set file descriptor set
     FD_ZERO(&read_fds);
     FD_SET(STDIN_FILENO, &read_fds); // STDIN_FILENO is 0
 
-    printf("Waiting for input (10 seconds timeout)...\n");
+    printf("Wait input\n");
 
     retval = select(STDIN_FILENO + 1, &read_fds, NULL, NULL, &timeout);
 
@@ -25,7 +25,7 @@ int main() {
         return 1;
     }
       else if (retval == 0) {
-        printf("Timeout: No input within 10 seconds.\n");
+        printf("timeout. no input\n");
       }
       else {
         char buffer[100];

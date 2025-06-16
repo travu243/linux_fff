@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment11/multi_devices/modules.order := {   echo /home/aaa/Desktop/training/assignment11/multi_devices/multi_devices.o; :; } > /home/aaa/Desktop/training/assignment11/multi_devices/modules.order

@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment11/multi_devices/multi_devices.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/aaa/Desktop/training/assignment11/multi_devices/multi_devices.ko /home/aaa/Desktop/training/assignment11/multi_devices/multi_devices.o /home/aaa/Desktop/training/assignment11/multi_devices/multi_devices.mod.o

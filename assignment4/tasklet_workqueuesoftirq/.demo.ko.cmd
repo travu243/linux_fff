@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/demo.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/demo.ko /home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/demo.o /home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/demo.mod.o

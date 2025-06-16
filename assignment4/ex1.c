@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <signal.h>
 
-// Signal handler function
 void handle_signal(int sig) {
     switch (sig) {
         case SIGUSR1:
@@ -19,17 +18,15 @@ void handle_signal(int sig) {
 }
 
 int main() {
-    // Register signal handlers using signal()
     signal(SIGUSR1, handle_signal);
     signal(SIGUSR2, handle_signal);
 
-    printf("Process ID: %d\n", getpid());
+    printf("pid %d\n", getpid());
 
-    printf("Waiting for SIGUSR1 or SIGUSR2...\n");
+    printf("wait SIGUSR1 or SIGUSR2\n");
 
-    // Keep the program running
     while (1) {
-        pause();  // Suspend until signal arrives
+        pause();  // pause for signal
     }
 
     return 0;

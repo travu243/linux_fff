@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/Module.symvers -T /home/aaa/Desktop/training/assignment4/tasklet_workqueuesoftirq/modules.order -i Module.symvers -e 

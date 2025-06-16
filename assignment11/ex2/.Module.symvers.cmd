@@ -1,0 +1,1 @@
+savedcmd_/home/aaa/Desktop/training/assignment11/ex2/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/aaa/Desktop/training/assignment11/ex2/Module.symvers -T /home/aaa/Desktop/training/assignment11/ex2/modules.order -i Module.symvers -e 

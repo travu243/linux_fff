@@ -13,18 +13,18 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    // Tạo pipe
+    // create pipe
     int pipefd[2];
     if (pipe(pipefd) == -1) {
         perror("pipe");
         exit(EXIT_FAILURE);
     }
 
-    // Ghi vào pipe ngay khi bắt đầu
+    // write to pipe
     const char *initial_msg = "welcome\n";
     write(pipefd[1], initial_msg, strlen(initial_msg));
 
-    // Đăng ký stdin
+    // sign up stdin
     struct epoll_event ev;
     ev.events = EPOLLIN;
     ev.data.fd = STDIN_FILENO;
@@ -33,7 +33,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    // Đăng ký đầu đọc của pipe
+    // sign up read pipe
     ev.events = EPOLLIN;
     ev.data.fd = pipefd[0];
     if (epoll_ctl(epoll_fd, EPOLL_CTL_ADD, pipefd[0], &ev) == -1) {
@@ -43,7 +43,7 @@ int main() {
 
     struct epoll_event events[MAX_EVENTS];
 
-    printf("Waiting for input on stdin or pipe...\n");
+    printf("wait for input on stdin or pipe...\n");
 
     while (1) {
         int n = epoll_wait(epoll_fd, events, MAX_EVENTS, -1);
@@ -62,7 +62,7 @@ int main() {
                     buf[count] = '\0';
                     printf("stdin: %s\n", buf);
 
-                    // Ghi vào pipe để xử lý tiếp
+                    // write to pipe
                     //write(pipefd[1], buf, count);
                     write(pipefd[1],"hello\n", 5);
                 }
