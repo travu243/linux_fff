@@ -1,0 +1,1 @@
+cmd_/home/debian/mock_project1/Module.symvers := sed 's/ko$$/o/' /home/debian/mock_project1/modules.order | scripts/mod/modpost -m    -o /home/debian/mock_project1/Module.symvers -e -i Module.symvers   -T -

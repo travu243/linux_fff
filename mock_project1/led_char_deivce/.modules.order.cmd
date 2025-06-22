@@ -1,0 +1,1 @@
+cmd_/home/debian/mock_project1/led_char_deivce/modules.order := {   echo /home/debian/mock_project1/led_char_deivce/led_char_dev.ko; :; } | awk '!x[$$0]++' - > /home/debian/mock_project1/led_char_deivce/modules.order

@@ -1,0 +1,1 @@
+cmd_/home/debian/mock_project1/led_dt/led_dt.ko := ld -r -EL -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/debian/mock_project1/led_dt/led_dt.ko /home/debian/mock_project1/led_dt/led_dt.o /home/debian/mock_project1/led_dt/led_dt.mod.o;  true
