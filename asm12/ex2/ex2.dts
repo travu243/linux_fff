@@ -1,0 +1,40 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "ti,beaglebone-black";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+	    tra_device@0 {
+                compatible = "travu,ex2";
+                status = "okay";
+
+                my-int-prop = <1234>;
+                my-string-prop = "hello-world";
+                my-array-prop = <1 2 3 4>;
+
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+                child:child_device@0 {
+                    compatible = "travu,ex2_child";
+                    reg = <0x2000 0x100>;
+                    child-int = <5678>;
+                    child-string = "child-node";
+                    override-this = "original-value";
+                };
+            };
+        };
+    };
+
+    fragment@1 {
+        //override child properties
+        target = <&child>;
+        __overlay__ {
+            override-this = "overridden-value";
+            child-int = <9999>;  // override int
+        };
+    };
+};
