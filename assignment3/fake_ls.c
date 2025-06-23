@@ -30,9 +30,9 @@ void print_info(const char *path, const char *name) {
     char create_time[64], modify_time[64];
 
     // birth time is not standardized, but st_ctime is often used as creation on ext4
-    strftime(create_time, sizeof(create_time), "%Y-%m-%d %H:%M:%S", localtime(&st.st_ctime));
+    strftime(create_time, sizeof(create_time), "%Y-%m-%d %H:%M:%S", localtime(&file_info.st_ctime));
 
-    strftime(modify_time, sizeof(modify_time), "%Y-%m-%d %H:%M:%S", localtime(&st.st_mtime));
+    strftime(modify_time, sizeof(modify_time), "%Y-%m-%d %H:%M:%S", localtime(&file_info.st_mtime));
 
     printf("%-30s %-10s %-15s Created: %-20s Modified: %-20s\n",
            name, type, owner, create_time, modify_time);
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
     }
 
     struct dirent *entry;
-    go through all entry of current dir
+    //go through all entry of current dir
     while ((entry = readdir(d)) != NULL) {
         // not handle ./ and ../ directory
         if (strcmp(entry->d_name, ".") && strcmp(entry->d_name, ".."))

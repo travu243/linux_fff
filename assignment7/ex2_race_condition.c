@@ -3,7 +3,7 @@
 #include <pthread.h>
 
 #define NUM_THREADS 10
-#define NUM_INCREMENTS 100000
+#define NUM_INCREMENTS 10000
 
 int counter = 0; // Shared resource
 

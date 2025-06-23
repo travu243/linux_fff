@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/hello_world/hello_world.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/lubuntu/Desktop/training/hello_world/hello_world.ko /home/lubuntu/Desktop/training/hello_world/hello_world.o /home/lubuntu/Desktop/training/hello_world/hello_world.mod.o

@@ -1,0 +1,9 @@
+/dts-v1/;
+/plugin/;
+
+&{/} {
+    my_sensor@0 {
+        compatible = "you,my-sensor";
+        threshold = <75>;
+    };
+};

@@ -1,0 +1,1 @@
+savedcmd_/home/lubuntu/Desktop/training/hello_world/hello_world.mod := printf '%s\n'   hello_world.o | awk '!x[$$0]++ { print("/home/lubuntu/Desktop/training/hello_world/"$$0) }' > /home/lubuntu/Desktop/training/hello_world/hello_world.mod
