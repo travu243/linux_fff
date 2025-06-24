@@ -13,7 +13,7 @@
 
 #define GPIO0_30                  (1 << 30)  // P9_11
 
-static void __io	mem *gpio0_base = NULL;
+static void __iomem *gpio0_base = NULL;
 
 static int __init led_gpio_init(void)
 {
