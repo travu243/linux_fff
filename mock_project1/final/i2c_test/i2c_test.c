@@ -1,13 +1,13 @@
-#include <linux/module.h>
-#include <linux/init.h>
-#include <linux/i2c.h>
-#include <linux/kthread.h>
-#include <linux/delay.h>
-#include <linux/fs.h>
-#include <linux/uaccess.h>
-#include <linux/cdev.h>
-#include <linux/device.h>
-#include <linux/ioctl.h> // <-- Thêm dòng này
+#include <linux/module.h>       // MODULE_LICENSE, MODULE_AUTHOR, module_init/module_exit
+#include <linux/init.h>         // __init, __exit
+#include <linux/i2c.h>          // i2c_adapter,struct i2c_msg,i2c_get_adapter,i2c_transfer,i2c_put_adapter
+#include <linux/kthread.h>      // kthread_run(), kthread_stop(), kthread_should_stop(), struct task_struct
+#include <linux/delay.h>        // msleep()
+#include <linux/fs.h>           // alloc_chrdev_region(), struct file_operations
+#include <linux/uaccess.h>      // copy_to_user()
+#include <linux/cdev.h>         // struct cdev, cdev_init(), cdev_add(), cdev_del()
+#include <linux/device.h>       // class_create(), device_create(), device_destroy(), class_destroy()
+#include <linux/ioctl.h>        // _IOW, _IOR macros for ioctl
 
 #define DRIVER_NAME     "i2c_pcf_driver"
 #define DEVICE_NAME     "i2c_ledchar"
@@ -83,7 +83,7 @@ static ssize_t i2c_read(struct file *file, char __user *buf, size_t count, loff_
     return len;
 }
 
-// cập nhật file_operations
+// file_operations
 static const struct file_operations fops = {
     .owner = THIS_MODULE,
     .read = i2c_read,
@@ -107,7 +107,7 @@ static int __init i2c_api_sender_init(void) {
     device_create(i2c_class, NULL, dev_num, NULL, DEVICE_NAME);
     pr_info("%s: /dev/%s created\n", DRIVER_NAME, DEVICE_NAME);
 
-    // start I2C sending thread
+    // start i2c sending thread
     sender_task = kthread_run(sender_thread_fn, NULL, "i2c_sender_thread");
     if (IS_ERR(sender_task)) {
         device_destroy(i2c_class, dev_num);
@@ -137,7 +137,7 @@ static void __exit i2c_api_sender_exit(void) {
     unregister_chrdev_region(dev_num, 1);
 }
 
-late_initcall_sync(i2c_api_sender_init);
+late_initcall_sync(i2c_api_sender_init);//call after i2c inited
 module_exit(i2c_api_sender_exit);
 
 MODULE_LICENSE("GPL");

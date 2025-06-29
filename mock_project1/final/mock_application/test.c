@@ -1,12 +1,12 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <termios.h>
-#include <string.h>
-#include <pthread.h>
-#include <stdbool.h>
-#include <sys/ioctl.h>
+#include <stdio.h>// printf(), perror(), snprintf()
+#include <fcntl.h>// open(), O_RDWR, O_RDONLY
+#include <unistd.h>// close(), sleep(), read(), write()
+#include <stdlib.h>// exit(), malloc(), free()
+#include <termios.h>// struct termios, tcgetattr(), tcsetattr()
+#include <string.h>// strlen(), memset()...
+#include <pthread.h>// pthread_create(), pthread_join()
+#include <stdbool.h>// `bool`, `true`, `false`
+#include <sys/ioctl.h>// ioctl(), _IOW, _IOR macro
 
 #define DEVICE "/dev/ledled"
 #define I2C_DEV "/dev/i2c_ledchar"

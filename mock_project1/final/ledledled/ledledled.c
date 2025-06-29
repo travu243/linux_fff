@@ -1,14 +1,14 @@
-#include <linux/module.h>
-#include <linux/kernel.h>
-#include <linux/init.h>
-#include <linux/fs.h>
-#include <linux/cdev.h>
-#include <linux/device.h>
-#include <linux/uaccess.h>
-#include <linux/platform_device.h>
-#include <linux/io.h>
-#include <linux/of.h>
-#include <linux/of_address.h>
+#include <linux/module.h>          // module_init, module_exit, MODULE_*
+#include <linux/kernel.h>          // pr_info, KERN_INFO (log)
+//#include <linux/init.h>            // __init, __exit
+#include <linux/fs.h>              // alloc_chrdev_region, struct file_operations
+#include <linux/cdev.h>            // struct cdev, cdev_init, cdev_add, cdev_del
+#include <linux/device.h>          // class_create, device_create, device_destroy
+#include <linux/uaccess.h>         // copy_from_user, copy_to_user
+#include <linux/platform_device.h> // platform_driver, platform_device, struct resource
+#include <linux/io.h>              // ioremap, iowrite32, ioread32, iounmap
+#include <linux/of.h>              // device tree: of_match_ptr, of_device_id
+#include <linux/of_address.h>      // of_iomap
 
 #define DEVICE_NAME "ledled"
 #define CLASS_NAME "ledclass"
@@ -104,8 +104,7 @@ static const struct file_operations fops = {
     .unlocked_ioctl = led_ioctl,
 };
 
-static int led_probe(struct platform_device *pdev)
-{
+static int led_probe(struct platform_device *pdev){
     struct device *dev = &pdev->dev;
 
     led.base = of_iomap(dev->of_node, 0);
@@ -132,8 +131,7 @@ static int led_probe(struct platform_device *pdev)
     return 0;
 }
 
-static void led_remove(struct platform_device *pdev)
-{
+static void led_remove(struct platform_device *pdev){
     device_destroy(led_class, dev_num);
     class_destroy(led_class);
     cdev_del(&led_cdev);

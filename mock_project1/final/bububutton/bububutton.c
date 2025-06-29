@@ -1,13 +1,13 @@
-#include <linux/module.h>
-#include <linux/kernel.h>
-#include <linux/init.h>
-#include <linux/of.h>
-#include <linux/of_platform.h>
-#include <linux/platform_device.h>
-#include <linux/gpio.h>
-#include <linux/of_gpio.h>
+#include <linux/module.h>//module_init, module_exit, MODULE_* macros
+#include <linux/kernel.h>//pr_info, pr_err
+//#include <linux/init.h>//__init, __exit macros
+#include <linux/of.h>//device Tree, access to device node properties
+#include <linux/of_platform.h>//platform_device and platform_driver
+#include <linux/platform_device.h>//platform_device and platform_driver
+#include <linux/gpio.h>//gpio api
+#include <linux/of_gpio.h>//api gpio lookup via device tree
 #include <linux/interrupt.h>
-#include <linux/io.h>
+//#include <linux/io.h>//memory-mapped I/O registers
 
 // from ledledled.c export
 extern void set_led_state(bool a);
@@ -37,7 +37,7 @@ static int bububutton_probe(struct platform_device *pdev)
             return -EINVAL;
         }
 
-        gpio_request(button_data.gpio, "btn_gpio");
+        gpio_request(button_data.gpio, "btn_gpio");//sign up with kernel to use this gpio
         gpio_direction_input(button_data.gpio);
 
         button_data.irq = gpio_to_irq(button_data.gpio);
