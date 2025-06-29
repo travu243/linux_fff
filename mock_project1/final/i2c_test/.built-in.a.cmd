@@ -1,0 +1,1 @@
+savedcmd_drivers/i2c_test/built-in.a := rm -f drivers/i2c_test/built-in.a;  printf "drivers/i2c_test/%s " i2c_test.o | xargs /home/aaa/Desktop/buildroot/output/host/bin/arm-buildroot-linux-gnueabihf-ar cDPrST drivers/i2c_test/built-in.a

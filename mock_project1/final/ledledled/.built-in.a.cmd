@@ -1,0 +1,1 @@
+savedcmd_drivers/ledledled/built-in.a := rm -f drivers/ledledled/built-in.a;  printf "drivers/ledledled/%s " ledledled.o | xargs /home/aaa/Desktop/buildroot/output/host/bin/arm-buildroot-linux-gnueabihf-ar cDPrST drivers/ledledled/built-in.a

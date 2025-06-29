@@ -1,0 +1,4 @@
+config LEDLEDLED
+    bool "LEDLEDLED driver dang cap"
+    help
+      This adds a custom LEDLEDLED driver.

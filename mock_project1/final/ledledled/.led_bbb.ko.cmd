@@ -1,0 +1,1 @@
+savedcmd_drivers/led_bbb/led_bbb.ko := /home/aaa/Desktop/buildroot/output/host/bin/arm-buildroot-linux-gnueabihf-ld -r -EL -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o drivers/led_bbb/led_bbb.ko drivers/led_bbb/led_bbb.o drivers/led_bbb/led_bbb.mod.o .module-common.o

@@ -1,0 +1,1 @@
+savedcmd_drivers/bububutton/built-in.a := rm -f drivers/bububutton/built-in.a;  printf "drivers/bububutton/%s " bububutton.o | xargs /home/aaa/Desktop/buildroot/output/host/bin/arm-buildroot-linux-gnueabihf-ar cDPrST drivers/bububutton/built-in.a

@@ -1,0 +1,4 @@
+config BUBUBUTTON
+    bool "BUBUBUTTON driver dang cap"
+    help
+      This adds a custom BUBUBUTTON driver.

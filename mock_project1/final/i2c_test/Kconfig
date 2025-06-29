@@ -1,0 +1,4 @@
+config I2C_TEST
+    bool "I2C PCF8574 dang cap"
+    help
+      This add i2c driver comunication with pcf8574 to control led.
