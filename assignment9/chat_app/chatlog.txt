@@ -31,3 +31,6 @@ aaa: concac
 aaa: concac
 aaa: concac
 aaa: concac
+[SERVER]: aaa joined the chat
+aaa: adasd
+aaa: asdasd
