@@ -11,25 +11,31 @@
 #define PORT 1234
 #define MAX_CLIENTS 100
 
-typedef struct {
-    SSL *ssl;
-    int active;
-    char username[50];
-} Client;
 
-Client clients[MAX_CLIENTS];
+typedef struct ClientNode {
+    SSL *ssl;
+    char username[50];
+    struct ClientNode *next;
+} ClientNode;
+
+
+ClientNode *clients_head = NULL;
 pthread_mutex_t clients_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 // broadcast to all client
 void broadcast(const char *msg, SSL *sender) {
     pthread_mutex_lock(&clients_mutex);
-    for (int i = 0; i < MAX_CLIENTS; i++) {
-        if (clients[i].active && clients[i].ssl != sender) {
-            SSL_write(clients[i].ssl, msg, strlen(msg));
+    ClientNode *curr = clients_head;
+    while (curr) {
+        if (curr->ssl != sender) {
+            SSL_write(curr->ssl, msg, strlen(msg));
         }
+        curr = curr->next;
     }
     pthread_mutex_unlock(&clients_mutex);
 }
+
+
 
 void save_chat_log(const char *message) {
     FILE *log = fopen("chatlog.txt", "a");
@@ -51,33 +57,44 @@ void send_chat_log(SSL *ssl) {
 }
 
 // init 1 client
-int add_client(SSL *ssl, const char *username) {
+void add_client(SSL *ssl, const char *username) {
+    ClientNode *new_client = (ClientNode *)malloc(sizeof(ClientNode));
+    new_client->ssl = ssl;
+    strncpy(new_client->username, username, sizeof(new_client->username));
+    new_client->next = NULL;
+
     pthread_mutex_lock(&clients_mutex);
-    for (int i = 0; i < MAX_CLIENTS; i++) {
-        if (!clients[i].active) {
-            clients[i].ssl = ssl;
-            clients[i].active = 1;
-            strncpy(clients[i].username, username, sizeof(clients[i].username));
-            pthread_mutex_unlock(&clients_mutex);
-            return i;
-        }
-    }
+    new_client->next = clients_head;
+    clients_head = new_client;
     pthread_mutex_unlock(&clients_mutex);
-    return -1;
 }
+
+
 
 // deinit 1 client
 void remove_client(SSL *ssl) {
     pthread_mutex_lock(&clients_mutex);
-    for (int i = 0; i < MAX_CLIENTS; i++) {
-        if (clients[i].active && clients[i].ssl == ssl) {
-            clients[i].active = 0;
-            clients[i].ssl = NULL;
+    ClientNode *curr = clients_head;
+    ClientNode *prev = NULL;
+
+    while (curr) {
+        if (curr->ssl == ssl) {
+            if (prev) {
+                prev->next = curr->next;
+            } else {
+                clients_head = curr->next;
+            }
+            free(curr);
             break;
         }
+        prev = curr;
+        curr = curr->next;
     }
+
     pthread_mutex_unlock(&clients_mutex);
 }
+
+
 
 int authenticate(SSL *ssl, char *username_out) {
     char buffer[1024], username[50], password[50];
